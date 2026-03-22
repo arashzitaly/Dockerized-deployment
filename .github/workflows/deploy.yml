@@ -37,11 +37,11 @@ jobs:
                   username: ${{ secrets.SERVER_USER }}
                   key: ${{ secrets.SERVER_SSH_KEY }}
                   script: |
-                      docker pull ghcr.io/${{ github.repository }}:latest
+                      docker pull ghcr.io/arashzitaly/dockerized-deployment:latest
                       docker stop app || true
                       docker rm app || true
                       docker run -d --name app -p 3000:3000 \
                         -e SECRET_MESSAGE="${{ secrets.SECRET_MESSAGE }}" \
                         -e USERNAME="${{ secrets.APP_USERNAME }}" \
                         -e PASSWORD="${{ secrets.APP_PASSWORD }}" \
-                        ghcr.io/${{ github.repository }}:latest
+                        ghcr.io/arashzitaly/dockerized-deployment:latest
